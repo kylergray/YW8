@@ -230,14 +230,14 @@
         restaurant.location.lat + '%2C' + restaurant.location.lng +
         '&query_place_id=' + restaurant.place_id;
       restaurantBox.classList.add('restaurant');
-      let restaurantPics = gen('div');
-      restaurantPics.classList.add('images');
-      for (let pic of restaurant.images) {
-        let picImg = gen('img');
-        picImg.src = pic;
-        restaurantPics.appendChild(picImg);
-      }
-      restaurantBox.appendChild(restaurantPics);
+      // let restaurantPics = gen('div');
+      // restaurantPics.classList.add('images');
+      // for (let pic of restaurant.images) {
+      //   let picImg = gen('img');
+      //   picImg.src = pic;
+      //   restaurantPics.appendChild(picImg);
+      // }
+      // restaurantBox.appendChild(restaurantPics);
       let restaurantName = gen('h2');
       restaurantName.classList.add('name');
       restaurantName.textContent = restaurant.name;
