@@ -10,6 +10,21 @@ body {
   overflow: hidden;
 }
 
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:visited {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 #app {
   width: 100vw;
   max-width: 812px;
@@ -31,7 +46,7 @@ body {
   width: 100%;
   margin-top: -16px;
   padding-top: 16px;
-  height: calc(100vh - 88px);
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   overflow-y: auto;

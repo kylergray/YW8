@@ -63,7 +63,8 @@
   async function loadRestaurants() {
     let restaurantSection = document.getElementById('restaurants');
     for (let restaurant of restaurants) {
-      let restaurantBox = gen('div');
+      let restaurantBox = gen('a');
+      restaurantBox.href = 'https://www.google.com/maps/search/?api=1&query=47.5951518%2C-122.3316393';
       restaurantBox.classList.add('restaurant');
       let restaurantPics = gen('div');
       restaurantPics.classList.add('images');
