@@ -1,0 +1,108 @@
+body {
+  font-family: 'Readex Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#app {
+  width: 100vw;
+  max-width: 812px;
+  overflow: hidden;
+}
+
+#app h1 {
+  width: calc(100% - 64px);
+  margin: 16px;
+  padding: 16px;
+  background: white;
+  font-size: 24px;
+  box-shadow: 0 5px 20px rgb(126, 126, 126);
+  border-radius: 12px;
+  text-align: center;
+}
+
+#restaurants {
+  width: 100%;
+  margin-top: -16px;
+  padding-top: 16px;
+  height: calc(100vh - 88px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.restaurant:first {
+  margin-top: 16px;
+}
+
+.restaurant {
+  width: calc(100% - 32px);
+  margin: 0 16px 16px 16px;
+  box-shadow: 0px 4px 8px rgb(126, 126, 126);
+  border-radius: 12px;
+  min-height: 288px;
+  overflow-x: hidden;
+}
+
+.restaurant .images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: calc(100% - 8px);
+  overflow: auto;
+  padding: 16px;
+}
+
+.restaurant .images::-webkit-scrollbar {
+  display: none;
+}
+
+.restaurant .images > img {
+  width: 150px;
+  height: 150px;
+  margin-right: 8px;
+  border-radius: 10px;
+}
+
+.restaurant .images > img:last-child {
+  margin-right: 24px;
+}
+
+.restaurant h2 {
+  margin: 16px;
+}
+
+.restaurant .times {
+  width: calc(100vw - 32px);
+  display: flex;
+  flex-direction: row;
+  margin: 16px;
+}
+
+.restaurant .times > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.restaurant .times > div > * {
+  display: block;
+  margin: 4px;
+}
+
+.restaurant .times .slow {
+  color: rgb(240, 56, 56);
+}
+
+.restaurant .times .mid {
+  color: rgb(248, 155, 48);
+}
+
+.restaurant .times .fast {
+  color: rgb(31, 163, 31);
+}
