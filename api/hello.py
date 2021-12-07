@@ -1,5 +1,6 @@
 from flask import Flask
 from flask.wrappers import Response
+from flask import request
 from dotenv import load_dotenv
 import populartimes
 import requests
@@ -11,10 +12,13 @@ app = Flask(__name__)
 
 api_key = os.environ.get('api_key')
 
-@app.route('/test.json')
+@app.route('/data')
 def hello_world():
-    lat = 47.658101130283974
-    lng = -122.31845242186691
+    # lat = 47.658101130283974
+    # lng = -122.31845242186691
+    lat = request.args.get("lat")
+    lng = request.args.get("lng")
+    print(request.query_string)
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ str(lat) + "%2C" + str(lng) + "&radius=1500&type=restaurant&opennow=true&key=" + str(api_key)
     payload={}
     headers = {}
