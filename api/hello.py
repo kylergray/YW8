@@ -43,7 +43,6 @@ def hello_world():
             element['walk_time'] = float(getWalkTime(element['place_id'], lat, lng)) / 60
 
     return json.dumps(output_list)
-    # return populartimes.get_id('AIzaSyAAEifcsR0eNi3HmhI1HcqRc-e6hzW7HS8', 'ChIJKaC2QvMUkFQRWVvn71SBmuY')
 
 @app.route('/test')
 def test():
@@ -63,7 +62,3 @@ def getWalkTime(place_id, lat, lng):
     headers = {}
     response = json.loads(requests.request("GET", url, headers=headers, data=payload).text)
     return response['rows'][0]['elements'][0]['duration']['value']
-
-@app.route('/')
-def root():
-    return populartimes.get_id('AIzaSyAAEifcsR0eNi3HmhI1HcqRc-e6hzW7HS8', 'ChIJKaC2QvMUkFQRWVvn71SBmuY')
