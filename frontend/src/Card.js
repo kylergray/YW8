@@ -8,13 +8,25 @@ import './Card.css';
 
 class Restaurant extends Component {
 
+	constructor(props) {
+		super(props);
+		const mapsLink = "https://www.google.com/maps/place/?q=place_id:" + this.props.props.place_id;
+		this.state = {
+			url: mapsLink
+		}
+	}
+
+	loadMaps = () => {
+		window.open(this.state.url, '_blank');
+	}
+
 
 	render() {
     console.log(this.props)
 		return (
 			<div className="card">
 				<Card sx={{ maxWidth: 500, minWidth: 500 }}>
-					<CardActionArea onClick={alert}>
+					<CardActionArea onClick={this.loadMaps}>
 						<CardMedia
 						component="img"
 						height="140"

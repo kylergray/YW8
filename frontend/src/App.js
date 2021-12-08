@@ -11,13 +11,25 @@ class App extends Component {
     super(props);
     this.state = {
       restuarants: [],
-      objects: []
+      objects: [],
+      lat: 47.658101130283974,
+      lng: -122.31845242186691
     };
   }
 
   componentDidMount() {
     // Simple GET request using fetch
-    fetch('http://128.208.1.136:5000/data?lat=47.658101130283974&lng=-122.31845242186691')
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.setState({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        });
+
+      });
+    }
+
+    fetch('http://128.208.1.134:5000/data?lat=47.658101130283974&lng=-122.31845242186691')
         .then(response => response.json())
         .then(data => {
           console.log(data);
@@ -50,8 +62,9 @@ class App extends Component {
       <div className="App">
         <Card sx={{ maxWidth: 500 }} className="header">     
             <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                  Lizard
+
+              <Typography variant="h5" component="div">
+                  Explore Food
               </Typography>
             </CardContent>          
           </Card>
