@@ -16,6 +16,7 @@ class App extends Component {
       lat: 47.658101130283974,
       lng: -122.31845242186691
     };
+    // this.state = example
   }
 
   componentDidMount() {
@@ -27,26 +28,29 @@ class App extends Component {
           lng: position.coords.longitude
         });
 
+        const url = "http://128.208.1.137:5000/data?lat=" + this.state.lat + "&lng=" + this.state.lng;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            this.setState({restuarants: data});
+            // this.setState({objects: []});
+            let objects = [];
+            data.forEach(element => {
+              const location = <Card props={{data: element}} key={element.place_id}/>;
+              objects.push(location);
+            });
+            this.setState({objects: objects});
+            console.log(this.state)
+          });
+        console.log("loaded")
+        console.log(this.state);
+
       });
     }
 
-    fetch('http://128.208.1.137:5000/data?lat=47.658101130283974&lng=-122.31845242186691')
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          this.setState({restuarants: data});
-          // this.setState({objects: []});
-          let objects = [];
-          data.forEach(element => {
-            const location = <Card props={{data: element}} key={element.place_id}/>;
-            objects.push(location);
-          });
-          this.setState({objects: objects});
-          console.log(this.state)
-        });
-      console.log("loaded")
-      console.log(this.state);
-	}
+   }
 
   componentDidUpdate() {
     console.log("update")
@@ -63,7 +67,7 @@ class App extends Component {
       <div className="App">
         <Card sx={{ maxWidth: 500 }} className="header">     
             <CardContent className="card-content">
-            <img className="logo" src={logo}/>
+            <img className="logo" src={logo} alt=""/>
               <Typography variant="h5" component="div">
                   Explore Food
               </Typography>

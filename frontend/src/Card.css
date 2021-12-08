@@ -1,3 +1,21 @@
 .card {
     margin-bottom: 10px;
 }
+
+.cardcontent {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.icon {
+    padding: 10px;
+}
+
+.plus {
+    padding-left: 10px;
+}
+
+.clock {
+    padding-right: 10px;
+}
