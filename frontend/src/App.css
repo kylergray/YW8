@@ -36,6 +36,17 @@
   color: #61dafb;
 }
 
+.logo {
+  width: 75px;
+  padding-right: 10px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  align-items: center;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

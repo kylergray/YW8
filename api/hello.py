@@ -39,7 +39,8 @@ def hello_world():
                 element['wait_time'] = getPopularTimes(response_list[index][key])
             if (key == 'name'):
                 element['name'] = response_list[index][key]
-            
+            if (key == 'photos'):
+                element['photos'] = response_list[index][key][0]
         if (element['wait_time'] != -1):
             output_list.append(element)
             element['walk_time'] = float(getWalkTime(element['place_id'], lat, lng)) / 60

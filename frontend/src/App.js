@@ -4,6 +4,7 @@ import Restaurant from './Card.js';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import logo from './YW8.png';
 
 class App extends Component {
 
@@ -11,29 +12,45 @@ class App extends Component {
     super(props);
     this.state = {
       restuarants: [],
-      objects: []
+      objects: [],
+      lat: 47.658101130283974,
+      lng: -122.31845242186691
     };
+    // this.state = example
   }
 
   componentDidMount() {
     // Simple GET request using fetch
-    fetch('http://128.208.1.136:5000/data?lat=47.658101130283974&lng=-122.31845242186691')
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          this.setState({restuarants: data});
-          // this.setState({objects: []});
-          let objects = [];
-          data.forEach(element => {
-            const location = <Card props={{data: element}} key={element.place_id}/>;
-            objects.push(location);
-          });
-          this.setState({objects: objects});
-          console.log(this.state)
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.setState({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
         });
-      console.log("loaded")
-      console.log(this.state);
-	}
+
+        const url = "http://128.208.1.137:5000/data?lat=" + this.state.lat + "&lng=" + this.state.lng;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            this.setState({restuarants: data});
+            // this.setState({objects: []});
+            let objects = [];
+            data.forEach(element => {
+              const location = <Card props={{data: element}} key={element.place_id}/>;
+              objects.push(location);
+            });
+            this.setState({objects: objects});
+            console.log(this.state)
+          });
+        console.log("loaded")
+        console.log(this.state);
+
+      });
+    }
+
+   }
 
   componentDidUpdate() {
     console.log("update")
@@ -49,9 +66,10 @@ class App extends Component {
     return (
       <div className="App">
         <Card sx={{ maxWidth: 500 }} className="header">     
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                  Lizard
+            <CardContent className="card-content">
+            <img className="logo" src={logo} alt=""/>
+              <Typography variant="h5" component="div">
+                  Explore Food
               </Typography>
             </CardContent>          
           </Card>
