@@ -4,6 +4,7 @@ import Restaurant from './Card.js';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import logo from './YW8.png';
 
 class App extends Component {
 
@@ -29,7 +30,7 @@ class App extends Component {
       });
     }
 
-    fetch('http://128.208.1.134:5000/data?lat=47.658101130283974&lng=-122.31845242186691')
+    fetch('http://128.208.1.137:5000/data?lat=47.658101130283974&lng=-122.31845242186691')
         .then(response => response.json())
         .then(data => {
           console.log(data);
@@ -61,8 +62,8 @@ class App extends Component {
     return (
       <div className="App">
         <Card sx={{ maxWidth: 500 }} className="header">     
-            <CardContent>
-
+            <CardContent className="card-content">
+            <img className="logo" src={logo}/>
               <Typography variant="h5" component="div">
                   Explore Food
               </Typography>
